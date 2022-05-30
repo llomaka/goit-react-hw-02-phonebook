@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.input {
+  height: 45px;
+  padding: 6px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.87;
+}

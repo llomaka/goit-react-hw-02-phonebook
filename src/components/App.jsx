@@ -18,7 +18,7 @@ export default class App extends Component {
   }
 
   addContact = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     this.setState(prevState => {
       const newArray = [...prevState.contacts];
       newArray.push({
@@ -49,7 +49,6 @@ export default class App extends Component {
       >
         <h1 className={styles.header}>Phonebook</h1>
         <ContactForm
-          state={this.state}
           onChange={this.onChange}
           handleClick={this.addContact}
         />
