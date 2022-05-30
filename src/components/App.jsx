@@ -3,10 +3,12 @@ import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import styles from './App.module.css';
+import Filter from "./Filter/Filter";
 
 export default class App extends Component {
   state = {
     contacts: [],
+    filter: '',
     name: '',
     number: ''
   };
@@ -23,10 +25,15 @@ export default class App extends Component {
         ...prevState,
         number: event.target.value,
       }));
-    } else {
+    } else if ((event.target.name === "name")) {
       this.setState(prevState => ({
         ...prevState,
         name: event.target.value.trim(),
+      }));
+    } else {
+      this.setState(prevState => ({
+        ...prevState,
+        filter: event.target.value.trim(),
       }));
     }
   }
@@ -77,6 +84,10 @@ export default class App extends Component {
           handleClick={this.addContact}
         />
         <h2 className={styles.subheader}>Contacts</h2>
+        <Filter
+          onChange={this.onChange}
+          handleClick={this.addContact}
+        />
         <ContactList
           state={this.state}
         />
