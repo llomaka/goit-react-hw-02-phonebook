@@ -11,7 +11,7 @@ export default class Filter extends Component {
           name: PropTypes.string,
           number: PropTypes.string,
         })),
-      filter: PropTypes.string,
+      filter: PropTypes.string.isRequired,
     }),
     onChange: PropTypes.func.isRequired,
   };
