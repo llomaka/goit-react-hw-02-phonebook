@@ -74,6 +74,7 @@ export default class App extends Component {
           gap: 20,
           justifyContent: 'flex-start',
           alignItems: 'center',
+          padding: 20,
           fontSize: 40,
           color: '#010101'
         }}
