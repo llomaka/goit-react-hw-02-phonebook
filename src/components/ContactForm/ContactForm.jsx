@@ -9,18 +9,20 @@ export default class ContactForm extends Component {
     handleClick: PropTypes.func.isRequired,
   };
 
-  onInputKeyPress = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      this.props.handleClick();
-      event.target.value = '';
-    }
-  }
+  // onInputKeyPress = (event) => {
+  //   if (event.key === "Enter") {
+  //     return;
+  //     event.preventDefault();
+  //     this.props.handleClick();
+  //     event.target.value = '';
+  //   }
+  // }
 
   render() {
     return (
       <form
         className={styles.form}
+        id="contact-form"
         autoComplete="on"
       >
         <input
@@ -31,10 +33,11 @@ export default class ContactForm extends Component {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           onChange={this.props.onChange}
-          onKeyPress={this.onInputKeyPress}
+          // onKeyPress={this.onInputKeyPress}
         />
         <Button
           text="Add contact"
+          type="button"
           handleClick={this.props.handleClick}
         />
       </form>

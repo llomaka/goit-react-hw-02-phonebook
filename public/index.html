@@ -25,7 +25,6 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
-
     <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
@@ -70,5 +69,23 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script type="text/javascript">
+      window.addEventListener(
+        'keydown',
+        function (e) {
+          if (
+            e.keyIdentifier == 'U+000A' ||
+            e.keyIdentifier == 'Enter' ||
+            e.keyCode == 13
+          ) {
+            if (e.target.nodeName == 'INPUT' && e.target.type == 'text') {
+              e.preventDefault();
+              return false;
+            }
+          }
+        },
+        true
+      );
+    </script>
   </body>
 </html>

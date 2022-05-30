@@ -5,6 +5,7 @@ import styles from './Button.module.css';
 export default class Button extends Component {
   static propTypes = {
     text: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
     handleClick: PropTypes.func.isRequired
   };
 
@@ -12,7 +13,7 @@ export default class Button extends Component {
     return (
       <button
         className={styles.button}
-        type="button"
+        type={this.props.type}
         name={this.props.text}
         onClick={this.props.handleClick}
       >

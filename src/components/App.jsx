@@ -11,21 +11,31 @@ export default class App extends Component {
   };
 
   onChange = (event) => {
+    // if (event.key === "Enter") return;
+    // event.preventDefault();
+    // const regex = new RegExp("^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$");
+    // if (!regex.test(event.target.value)) {
+    //   return window.alert("Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan");
+    // }
     this.setState(prevState => ({
       ...prevState,
-      name: event.target.value,
-    }))
+      name: event.target.value.trim(),
+    }));
   }
 
   addContact = (event) => {
     // event.preventDefault();
+    if (!this.state.name)
+      return alert("Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan");
+    if (this.state.contacts.find(contact => contact.name.toLowerCase() === this.state.name.toLowerCase())) { return alert("Contact with such name already exists in the Contacts List");
+}
     this.setState(prevState => {
       const newArray = [...prevState.contacts];
       newArray.push({
         id: nanoid(),
         name: prevState.name,
       });
-
+      document.querySelector('#contact-form input').value = '';
       return {
         contacts: newArray,
         name: ''
