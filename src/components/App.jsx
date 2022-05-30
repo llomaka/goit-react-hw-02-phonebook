@@ -1,3 +1,5 @@
+import { nanoid } from 'nanoid';
+
 export const App = () => {
   return (
     <div
@@ -14,3 +16,5 @@ export const App = () => {
     </div>
   );
 };
+
+// model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
