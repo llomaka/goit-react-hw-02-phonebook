@@ -11,7 +11,7 @@ export default class ContactList extends Component {
     return (
       <ul>
         {this.props.state.contacts.map(contact =>
-          (<li key={contact.id} className={styles.text}>{contact.name}</li>)
+          (<li key={contact.id} className={styles.text}>{contact.name}: {contact.number}</li>)
           )}
       </ul>
     )

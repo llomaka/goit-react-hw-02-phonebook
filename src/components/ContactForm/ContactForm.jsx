@@ -25,16 +25,33 @@ export default class ContactForm extends Component {
         id="contact-form"
         autoComplete="on"
       >
-        <input
-          className={styles.input}
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          onChange={this.props.onChange}
-          // onKeyPress={this.onInputKeyPress}
-        />
+        <div className={styles.fields}>
+          <label className={styles.label} htmlFor="contact-name">Name *</label>
+          <input
+            className={styles.input}
+            type="text"
+            name="name"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+            onChange={this.props.onChange}
+            id="contact-name"
+            // onKeyPress={this.onInputKeyPress}
+          />
+        </div>
+        <div className={styles.fields}>
+          <label className={styles.label} htmlFor="contact-number">Number *</label>
+          <input
+            className={styles.input}
+            type="tel"
+            name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+            onChange={this.props.onChange}
+            id="contact-number"
+          />
+        </div>
         <Button
           text="Add contact"
           type="button"
