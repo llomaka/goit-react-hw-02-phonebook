@@ -12,7 +12,7 @@ export default class Button extends Component {
   render() {
     return (
       <button
-        className={styles.button}
+        className={this.props.color === "red" ? `${styles.button} ${styles.red}` : styles.button}
         type={this.props.type}
         name={this.props.text}
         onClick={this.props.handleClick}

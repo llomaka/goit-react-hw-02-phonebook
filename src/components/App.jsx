@@ -8,58 +8,49 @@ import Filter from "./Filter/Filter";
 export default class App extends Component {
   state = {
     contacts: [],
-    filter: '',
-    name: '',
-    number: ''
+    filter: ''
   };
 
   onChange = (event) => {
-    // if (event.key === "Enter") return;
-    // event.preventDefault();
-    // const regex = new RegExp("^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$");
-    // if (!regex.test(event.target.value)) {
-    //   return window.alert("Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan");
-    // }
-    if (event.target.name === "number") {
-      this.setState(prevState => ({
-        ...prevState,
-        number: event.target.value,
-      }));
-    } else if ((event.target.name === "name")) {
-      this.setState(prevState => ({
-        ...prevState,
-        name: event.target.value.trim(),
-      }));
-    } else {
       this.setState(prevState => ({
         ...prevState,
         filter: event.target.value.trim(),
       }));
-    }
   }
 
   addContact = (event) => {
-    // event.preventDefault();
-    if (!this.state.name || !this.state.number)
-      return alert("Please provide Name and Number to add to the Contacts List!");
-    if (this.state.contacts.find(contact => contact.name.toLowerCase() === this.state.name.toLowerCase()))
-      return alert("Contact with such name already exists in the Contacts List!");
-    if (!this.state.name && this.state.number)
+    if (!document.querySelector("#contact-name").value && document.querySelector("#contact-number").value)
       return alert("Please provide the contact's name!");
-    if (this.state.name && !this.state.number)
+    if (document.querySelector("#contact-name").value && !document.querySelector("#contact-number").value)
       return alert("Please provide the contact's phone number!");
+    if (this.state.contacts.find(contact => contact.name.toLowerCase() === document.querySelector("#contact-name").value.toLowerCase()))
+      return alert(`${document.querySelector("#contact-name").value} is already in Contacts List!`);
     this.setState(prevState => {
       const newArray = [...prevState.contacts];
       newArray.push({
         id: nanoid(),
-        name: prevState.name,
-        number: prevState.number,
+        name: document.querySelector("#contact-name").value,
+        number: document.querySelector("#contact-number").value,
       });
       document.querySelectorAll('#contact-form input').forEach(input => input.value = '');
       return {
         contacts: newArray,
-        name: '',
-        number: ''
+        filter: prevState.filter,
+      }
+    });
+  }
+
+  deleteContact = (event) => {
+    if (!event.target.closest('li')) return;
+    if (!event.target.closest('li').id) return;
+    this.setState(prevState => {
+      const newArray = [...prevState.contacts];
+      const index = newArray.findIndex(contact => contact.id === event.target.closest('li').id);
+      if (index === -1) return;
+      newArray.splice(index, 1);
+      return {
+        contacts: newArray,
+        filter: prevState.filter,
       }
     });
   }
@@ -90,6 +81,7 @@ export default class App extends Component {
         />
         <ContactList
           state={this.state}
+          handleClick={this.deleteContact}
         />
       </div>
     );

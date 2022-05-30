@@ -5,18 +5,8 @@ import styles from "./ContactForm.module.css";
 
 export default class ContactForm extends Component {
   static propTypes = {
-    onChange: PropTypes.func.isRequired,
     handleClick: PropTypes.func.isRequired,
   };
-
-  // onInputKeyPress = (event) => {
-  //   if (event.key === "Enter") {
-  //     return;
-  //     event.preventDefault();
-  //     this.props.handleClick();
-  //     event.target.value = '';
-  //   }
-  // }
 
   render() {
     return (
@@ -34,9 +24,7 @@ export default class ContactForm extends Component {
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
-            onChange={this.props.onChange}
             id="contact-name"
-            // onKeyPress={this.onInputKeyPress}
           />
         </div>
         <div className={styles.fields}>
@@ -48,13 +36,12 @@ export default class ContactForm extends Component {
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
-            onChange={this.props.onChange}
             id="contact-number"
           />
         </div>
         <Button
           text="Add contact"
-          type="button"
+          type="submit"
           handleClick={this.props.handleClick}
         />
       </form>
