@@ -18,13 +18,18 @@ export default class App extends Component {
       }));
   }
 
-  addContact = () => {
-    if (!document.querySelector("#contact-name").value && document.querySelector("#contact-number").value)
-      return alert("Please provide the contact's name!");
+  addContact = (event) => {
+    if (!document.querySelector("#contact-name").value && document.querySelector("#contact-number").value) {
+      alert("Please provide the contact's name!");
+      return false;
+    }
     if (document.querySelector("#contact-name").value && !document.querySelector("#contact-number").value)
       return alert("Please provide the contact's phone number!");
-    if (this.state.contacts.find(contact => contact.name.toLowerCase() === document.querySelector("#contact-name").value.toLowerCase()))
-      return alert(`${document.querySelector("#contact-name").value} is already in Contacts List!`);
+    if (this.state.contacts.find(contact => contact.name.toLowerCase() === document.querySelector("#contact-name").value.toLowerCase())) {
+      event.preventDefault();
+      alert(`${document.querySelector("#contact-name").value} is already in Contacts List!`);
+      return false;
+    }
     if (!/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(document.querySelector("#contact-name").value))
       return alert("Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan");
     if (!/\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/.test(document.querySelector("#contact-number").value))
@@ -67,7 +72,7 @@ export default class App extends Component {
           display: 'flex',
           flexDirection: 'column',
           gap: 20,
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
           alignItems: 'center',
           fontSize: 40,
           color: '#010101'

@@ -43,7 +43,7 @@ export default class ContactForm extends Component {
         </div>
         <Button
           text="Add contact"
-          type="button"
+          type="submit"
           handleClick={this.props.handleClick}
         />
       </form>
