@@ -84,6 +84,7 @@ export default class App extends Component {
         />
         <h2 className={styles.subheader}>Contacts</h2>
         <Filter
+          state={this.state}
           onChange={this.onChange}
         />
         <ContactList
