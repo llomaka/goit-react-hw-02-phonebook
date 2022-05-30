@@ -5,7 +5,15 @@ import styles from "./ContactList.module.css";
 
 export default class ContactList extends Component {
   static propTypes = {
-    state: PropTypes.object.isRequired,
+    state: PropTypes.shape({
+      contacts: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string,
+          name: PropTypes.string,
+          number: PropTypes.string,
+        })),
+      filter: PropTypes.string,
+    }),
     handleClick: PropTypes.func.isRequired,
   };
 

@@ -24,3 +24,7 @@
   font-weight: 400;
   line-height: 1.87;
 }
+
+.input:not(:placeholder-shown):invalid {
+  border: 2px solid red;
+}

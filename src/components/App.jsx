@@ -18,7 +18,7 @@ export default class App extends Component {
       }));
   }
 
-  addContact = (event) => {
+  addContact = () => {
     if (!document.querySelector("#contact-name").value && document.querySelector("#contact-number").value)
       return alert("Please provide the contact's name!");
     if (document.querySelector("#contact-name").value && !document.querySelector("#contact-number").value)
@@ -75,13 +75,11 @@ export default class App extends Component {
       >
         <h1 className={styles.header}>Phonebook</h1>
         <ContactForm
-          onChange={this.onChange}
           handleClick={this.addContact}
         />
         <h2 className={styles.subheader}>Contacts</h2>
         <Filter
           onChange={this.onChange}
-          handleClick={this.addContact}
         />
         <ContactList
           state={this.state}
