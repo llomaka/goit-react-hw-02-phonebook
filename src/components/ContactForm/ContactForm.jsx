@@ -37,7 +37,6 @@ export default class ContactForm extends Component {
     return (
       <form
         className={styles.form}
-        id="contact-form"
         autoComplete="on"
         onSubmit={this.handleSubmit}
       >
