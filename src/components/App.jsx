@@ -22,13 +22,12 @@ export default class App extends Component {
     if (this.state.contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())) {
       return alert(`${name} is already in Contacts List!`);
     }
-    const newContact = {
-      id: nanoid(),
-      name: name,
-      number: number,
-    };
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, newContact],
+      contacts: [...prevState.contacts, {
+        id: nanoid(),
+        name,
+        number,
+      }],
     }));
   }
 
