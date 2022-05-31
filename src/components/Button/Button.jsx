@@ -7,7 +7,7 @@ export default class Button extends Component {
     text: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     color: PropTypes.string,
-    handleClick: PropTypes.func.isRequired
+    handleClick: PropTypes.func
   };
 
   render() {
