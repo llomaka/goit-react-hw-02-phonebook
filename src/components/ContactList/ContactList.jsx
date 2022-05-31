@@ -10,7 +10,7 @@ export default class ContactList extends Component {
         id: PropTypes.string,
         name: PropTypes.string,
         number: PropTypes.string,
-        })),
+        })).isRequired,
     handleClick: PropTypes.func.isRequired,
   };
 
