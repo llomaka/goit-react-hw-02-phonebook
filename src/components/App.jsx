@@ -37,11 +37,9 @@ export default class App extends Component {
     }));
   }
 
-  renderContactList = () => {
-    if (this.state.filter) {
-      return this.state.contacts.filter(contact => contact.name.toLowerCase().includes(this.state.filter.toLowerCase()));
-    } else return this.state.contacts;
-  }
+  renderContactList = () => (
+    this.state.contacts.filter(contact => contact.name.toLowerCase().includes(this.state.filter.toLowerCase()))
+  )
 
   render() {
     return (

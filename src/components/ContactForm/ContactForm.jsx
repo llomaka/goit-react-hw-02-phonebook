@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Button from "components/Button";
 import { nanoid } from 'nanoid';
 import styles from "./ContactForm.module.css";
 
@@ -78,11 +77,13 @@ export default class ContactForm extends Component {
             value={this.state.number}
           />
         </div>
-        <Button
-          text="Add contact"
-          name="submit_button"
-          type="submit"
-        />
+        <button
+        className={styles.button}
+        type="submit"
+        name="submit_button"
+        >
+          Add contact
+        </button>
       </form>
     )
   }
