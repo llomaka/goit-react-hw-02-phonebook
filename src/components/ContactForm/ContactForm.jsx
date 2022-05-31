@@ -14,19 +14,24 @@ export default class ContactForm extends Component {
   };
 
   handleInputChange = (event) => {
-    this.setState(prevState => ({
-      ...prevState,
-      [event.target.name]: event.target.value,
-    }));
+    const { name, value } = event.target;
+    this.setState({[name]: value});
   };
 
-  render() {
+  handleSubmit = (event) => {
     const { handleClick } = this.props;
+    event.preventDefault();
+    handleClick(this.state);
+    this.setState({ name: '', number: '' });
+  }
+
+  render() {
     return (
       <form
         className={styles.form}
         id="contact-form"
         autoComplete="on"
+        onSubmit={this.handleSubmit}
       >
         <div className={styles.fields}>
           <label className={styles.label} htmlFor="contact-name">Name *</label>
@@ -61,7 +66,6 @@ export default class ContactForm extends Component {
         <Button
           text="Add contact"
           type="submit"
-          handleClick={handleClick}
         />
       </form>
     )
