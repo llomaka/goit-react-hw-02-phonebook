@@ -50,16 +50,10 @@ export default class App extends Component {
   }
 
   deleteContact = (id) => {
-    this.setState(prevState => {
-      const newArray = [...prevState.contacts];
-      const index = newArray.findIndex(contact => contact.id === id);
-      if (index === -1) return;
-      newArray.splice(index, 1);
-      return {
-        contacts: newArray,
-        filter: prevState.filter,
-      }
-    });
+    this.setState(prevState => ({
+      ...prevState,
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
   }
 
   render() {
