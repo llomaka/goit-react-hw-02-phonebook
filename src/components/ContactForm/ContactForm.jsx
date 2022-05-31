@@ -80,6 +80,7 @@ export default class ContactForm extends Component {
         </div>
         <Button
           text="Add contact"
+          name="submit_button"
           type="submit"
         />
       </form>
