@@ -4,8 +4,20 @@ import Button from "components/Button";
 import styles from "./ContactForm.module.css";
 
 export default class ContactForm extends Component {
+  state = {
+    name: '',
+    number: ''
+  };
+
   static propTypes = {
     handleClick: PropTypes.func.isRequired,
+  };
+
+  handleInputChange = (event) => {
+    this.setState(prevState => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
   };
 
   render() {
@@ -27,6 +39,8 @@ export default class ContactForm extends Component {
             required
             id="contact-name"
             placeholder="John Smith"
+            onChange={this.handleInputChange}
+            value={this.state.name}
           />
         </div>
         <div className={styles.fields}>
@@ -40,6 +54,8 @@ export default class ContactForm extends Component {
             required
             id="contact-number"
             placeholder="050-123-23-23"
+            onChange={this.handleInputChange}
+            value={this.state.number}
           />
         </div>
         <Button
