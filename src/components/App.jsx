@@ -13,14 +13,13 @@ export default class App extends Component {
 
   onChange = (event) => {
     const { value } = event.target;
-      this.setState(prevState => ({
-        ...prevState,
+      this.setState({
         filter: value.trim(),
-      }));
+      });
   }
 
   addContact = ({ name, number }) => {
-    if (this.state.contacts.find(contact => contact.name.toLowerCase() === name)) {
+    if (this.state.contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())) {
       return alert(`${name} is already in Contacts List!`);
     }
       this.setState(prevState => {
@@ -32,17 +31,21 @@ export default class App extends Component {
         });
 
         return {
-          contacts: newArray,
-          filter: prevState.filter,
+          contacts: newArray
         }
       });
   }
 
   deleteContact = (id) => {
     this.setState(prevState => ({
-      ...prevState,
       contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
+  }
+
+  renderContactList = () => {
+    if (this.state.filter) {
+      return this.state.contacts.filter(contact => contact.name.toLowerCase().includes(this.state.filter.toLowerCase()));
+    } else return this.state.contacts;
   }
 
   render() {
@@ -66,11 +69,11 @@ export default class App extends Component {
         />
         <h2 className={styles.subheader}>Contacts</h2>
         <Filter
-          state={this.state}
+          filter={this.state.filter}
           onChange={this.onChange}
         />
         <ContactList
-          state={this.state}
+          contacts={this.renderContactList()}
           handleClick={this.deleteContact}
         />
       </div>
