@@ -17,8 +17,6 @@ export default class Filter extends Component {
           className={styles.input}
           type="text"
           name="filter"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces."
           onChange={onChange}
           value={filter}
           />
