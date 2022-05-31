@@ -19,7 +19,10 @@ export default class App extends Component {
       }));
   }
 
-  addContact = ({name, number}) => {
+  addContact = ({ name, number }) => {
+    if (this.state.contacts.find(contact => contact.name.toLowerCase() === name)) {
+      return alert(`${name} is already in Contacts List!`);
+    }
       this.setState(prevState => {
         const newArray = [...prevState.contacts];
         newArray.push({
