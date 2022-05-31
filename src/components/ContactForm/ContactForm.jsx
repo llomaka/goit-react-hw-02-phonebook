@@ -1,6 +1,6 @@
-import Button from "components/Button/Button";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Button from "components/Button";
 import styles from "./ContactForm.module.css";
 
 export default class ContactForm extends Component {
@@ -9,6 +9,7 @@ export default class ContactForm extends Component {
   };
 
   render() {
+    const { handleClick } = this.props;
     return (
       <form
         className={styles.form}
@@ -44,7 +45,7 @@ export default class ContactForm extends Component {
         <Button
           text="Add contact"
           type="submit"
-          handleClick={this.props.handleClick}
+          handleClick={handleClick}
         />
       </form>
     )

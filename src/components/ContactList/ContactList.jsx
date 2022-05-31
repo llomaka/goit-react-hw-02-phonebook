@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Button from "components/Button/Button";
+import Button from "components/Button";
 import styles from "./ContactList.module.css";
 
 export default class ContactList extends Component {
@@ -18,11 +18,12 @@ export default class ContactList extends Component {
   };
 
   render() {
+    const { state, handleClick } = this.props;
     return (
       <ul>
-        {this.props.state.filter ? (
-          this.props.state.contacts
-            .filter(contact => contact.name.toLowerCase().includes(this.props.state.filter.toLowerCase()))
+        {state.filter ? (
+          state.contacts
+            .filter(contact => contact.name.toLowerCase().includes(state.filter.toLowerCase()))
             .map(contact =>
             (<li
               key={contact.id}
@@ -34,12 +35,12 @@ export default class ContactList extends Component {
                 text="Delete"
                 type="button"
                 color="red"
-                handleClick={this.props.handleClick}
+                handleClick={handleClick}
               />
             </li>)
             )
         ) : (
-          this.props.state.contacts.map(contact =>
+          state.contacts.map(contact =>
           (<li
             key={contact.id}
             id={contact.id}
@@ -50,7 +51,7 @@ export default class ContactList extends Component {
               text="Delete"
               type="button"
               color="red"
-              handleClick={this.props.handleClick}
+              handleClick={handleClick}
             />
           </li>)
           )

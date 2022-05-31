@@ -11,14 +11,15 @@ export default class Button extends Component {
   };
 
   render() {
+    const { text, type, color, handleClick } = this.props;
     return (
       <button
-        className={this.props.color === "red" ? `${styles.button} ${styles.red}` : styles.button}
-        type={this.props.type}
-        name={this.props.text}
-        onClick={this.props.handleClick}
+        className={color === "red" ? `${styles.button} ${styles.red}` : styles.button}
+        type={type}
+        name={text}
+        onClick={handleClick}
       >
-        {this.props.text}
+        {text}
       </button>
     )
   }

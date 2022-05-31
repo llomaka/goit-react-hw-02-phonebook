@@ -17,6 +17,7 @@ export default class Filter extends Component {
   };
 
   render() {
+    const { state, onChange } = this.props;
     return (
       <>
         <h2 className={styles.header}>Find contacts by name</h2>
@@ -26,8 +27,8 @@ export default class Filter extends Component {
           name="filter"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces."
-          onChange={this.props.onChange}
-          value={this.props.state.filter}
+          onChange={onChange}
+          value={state.filter}
           />
       </>
     )
