@@ -10,7 +10,7 @@ export default class ContactForm extends Component {
   };
 
   static propTypes = {
-    handleClick: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
   };
 
   handleInputChange = (event) => {
@@ -19,9 +19,9 @@ export default class ContactForm extends Component {
   };
 
   handleSubmit = (event) => {
-    const { handleClick } = this.props;
+    const { onSubmit } = this.props;
     event.preventDefault();
-    handleClick(this.state);
+    onSubmit(this.state);
     this.setState({ name: '', number: '' });
   }
 

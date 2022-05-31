@@ -59,7 +59,7 @@ export default class App extends Component {
       >
         <h1 className={styles.header}>Phonebook</h1>
         <ContactForm
-          handleClick={this.addContact}
+          onSubmit={this.addContact}
         />
         <h2 className={styles.subheader}>Contacts</h2>
         <Filter
