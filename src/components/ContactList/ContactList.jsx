@@ -35,7 +35,7 @@ export default class ContactList extends Component {
                 text="Delete"
                 type="button"
                 color="red"
-                handleClick={handleClick}
+                handleClick={() => handleClick(contact.id)}
               />
             </li>)
             )
@@ -51,7 +51,7 @@ export default class ContactList extends Component {
               text="Delete"
               type="button"
               color="red"
-              handleClick={handleClick}
+              handleClick={() => handleClick(contact.id)}
             />
           </li>)
           )

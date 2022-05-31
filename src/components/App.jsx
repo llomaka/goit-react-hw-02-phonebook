@@ -49,12 +49,10 @@ export default class App extends Component {
       });
   }
 
-  deleteContact = (event) => {
-    if (!event.target.closest('li')) return;
-    if (!event.target.closest('li').id) return;
+  deleteContact = (id) => {
     this.setState(prevState => {
       const newArray = [...prevState.contacts];
-      const index = newArray.findIndex(contact => contact.id === event.target.closest('li').id);
+      const index = newArray.findIndex(contact => contact.id === id);
       if (index === -1) return;
       newArray.splice(index, 1);
       return {
